@@ -26,6 +26,12 @@ class _HomePageState extends State<HomePage> {
             },
             child: const Text('Cancel'),
           ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Add'),
+          ),
         ],
       ),
     );
