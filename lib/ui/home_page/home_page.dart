@@ -19,6 +19,14 @@ class _HomePageState extends State<HomePage> {
           controller: _nameController,
           decoration: const InputDecoration(hintText: "Enter note here"),
         ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Cancel'),
+          ),
+        ],
       ),
     );
   }
