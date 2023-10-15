@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController _nameController = TextEditingController();
+
+  void openNotePopUp() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Add Note'),
+        content: TextField(
+          controller: _nameController,
+          decoration: const InputDecoration(hintText: "Enter note here"),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +33,8 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 35,
-                fontWeight: FontWeight.bold)
-        ),
-        backgroundColor:const Color(0xFFA87E5A),
+                fontWeight: FontWeight.bold)),
+        backgroundColor: const Color(0xFFA87E5A),
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
         actions: [
           IconButton(
@@ -26,7 +45,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: openNotePopUp,
         backgroundColor: const Color(0xFFA87E5A),
         child: const Icon(Icons.add),
       ),
