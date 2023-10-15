@@ -7,8 +7,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 4,
-        title: const Center(child: Text('Notes')),
+        elevation: 7,
+        centerTitle: true,
+        title: const Text('Ո ૦ ੮ ૯ Տ',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 35,
+                fontWeight: FontWeight.bold)
+        ),
+        backgroundColor:const Color(0xFFA87E5A),
+        toolbarHeight: MediaQuery.of(context).size.height * 0.1,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon:
+                const Icon(Icons.share_outlined, color: Colors.white, size: 30),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
