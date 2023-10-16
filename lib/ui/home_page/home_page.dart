@@ -37,6 +37,10 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
+              // Add note to Firestore
+              _firestore.addNote(
+                _nameController.text,
+              );
             },
             child: const Text('Add'),
           ),
