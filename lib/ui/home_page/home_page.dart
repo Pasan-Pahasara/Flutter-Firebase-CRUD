@@ -111,11 +111,21 @@ class _HomePageState extends State<HomePage> {
                   return ListTile(
                     title: Text(noteText),
                     trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         // Update note button
                         IconButton(
                           onPressed: () => openNotePopUp(docID: docID),
                           icon: const Icon(Icons.settings_outlined),
+                        ),
+                        // Delete note button
+                        IconButton(
+                          onPressed: () =>
+                            // Delete note from Firestore
+                            _firestore.deleteNote(
+                              docID,
+                            ),
+                          icon: const Icon(Icons.delete_outline),
                         ),
                       ],
                     ),
