@@ -88,44 +88,45 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add),
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: _firestore.getNotes(),
-          builder: (context, snapshot) {
-            // If we have data, get all the docs
-            if (snapshot.hasData) {
-              List notesList = snapshot.data!.docs;
+        stream: _firestore.getNotes(),
+        builder: (context, snapshot) {
+          // If we have data, get all the docs
+          if (snapshot.hasData) {
+            List notesList = snapshot.data!.docs;
 
-              // If we have data, show a list of notes
-              return ListView.builder(
-                itemCount: notesList.length,
-                itemBuilder: (context, index) {
-                  // Get each induvidual doc
-                  DocumentSnapshot document = notesList[index];
-                  String docID = document.id;
+            // If we have data, show a list of notes
+            return ListView.builder(
+              itemCount: notesList.length,
+              itemBuilder: (context, index) {
+                // Get each induvidual doc
+                DocumentSnapshot document = notesList[index];
+                String docID = document.id;
 
-                  // Get note from each doc
-                  Map<String, dynamic> data =
-                      document.data() as Map<String, dynamic>;
-                  if (data.containsKey('notes') && data['notes'] != null) {
-                    String noteText = data['notes'];
-                    // Return a widget showing the note
-                    return ListTile(
-                      title: Text(noteText),
-                      trailing: IconButton(
-                        onPressed: () => openNotePopUp(docID: docID),
-                        icon: const Icon(Icons.settings_outlined),
-                      ),
-                    );
-                  }
-                },
-              );
-            } else {
-              // If we don't have data, show a loading spinner
-              return const Center(
-                // child: CircularProgressIndicator(),
-                child: Text('No notes yet!'),
-              );
-            }
-          }),
+                // Get note from each doc
+                Map<String, dynamic> data =
+                    document.data() as Map<String, dynamic>;
+                if (data.containsKey('notes') && data['notes'] != null) {
+                  String noteText = data['notes'];
+                  // Return a widget showing the note
+                  return ListTile(
+                    title: Text(noteText),
+                    trailing: IconButton(
+                      onPressed: () => openNotePopUp(docID: docID),
+                      icon: const Icon(Icons.settings_outlined),
+                    ),
+                  );
+                }
+              },
+            );
+          } else {
+            // If we don't have data, show a loading spinner
+            return const Center(
+              // child: CircularProgressIndicator(),
+              child: Text('No notes yet!'),
+            );
+          }
+        },
+      ),
     );
   }
 }
