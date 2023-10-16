@@ -104,6 +104,12 @@ class _HomePageState extends State<HomePage> {
                     // Return a widget showing the note
                     return ListTile(
                       title: Text(noteText),
+                      trailing: IconButton(
+                        onPressed: () {
+                          // Update note from Firestore
+                        },
+                        icon: const Icon(Icons.settings_outlined),
+                      ),
                     );
                   }
                 },
