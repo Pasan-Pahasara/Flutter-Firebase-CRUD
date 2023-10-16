@@ -110,9 +110,14 @@ class _HomePageState extends State<HomePage> {
                   // Return a widget showing the note
                   return ListTile(
                     title: Text(noteText),
-                    trailing: IconButton(
-                      onPressed: () => openNotePopUp(docID: docID),
-                      icon: const Icon(Icons.settings_outlined),
+                    trailing: Row(
+                      children: [
+                        // Update note button
+                        IconButton(
+                          onPressed: () => openNotePopUp(docID: docID),
+                          icon: const Icon(Icons.settings_outlined),
+                        ),
+                      ],
                     ),
                   );
                 }
