@@ -31,4 +31,11 @@ class FirestoreService {
       'timestamp': Timestamp.now(),
     });
   }
+
+  // DELETE: Delete a note
+  Future<void> deleteNote(
+    String docId,
+  ) {
+    return notesCollection.doc(docId).delete();
+  }
 }
