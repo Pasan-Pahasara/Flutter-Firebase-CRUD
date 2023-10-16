@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                   String noteText = data['notes'];
                   return Card(
                     elevation: 4,
-                    margin: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.fromLTRB(15, 15, 15, 0),
                     color: const Color(0xFFF4F2FD),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
