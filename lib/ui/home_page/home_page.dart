@@ -41,6 +41,9 @@ class _HomePageState extends State<HomePage> {
               _firestore.addNote(
                 _nameController.text,
               );
+
+              // Clear the text controller
+              _nameController.clear();
             },
             child: const Text('Add'),
           ),
