@@ -63,7 +63,7 @@ https://github.com/Pasan-Pahasara/Flutter-Firebase-CRUD.git
 ![GitHub Contributions](https://img.shields.io/github/contributors/Pasan-Pahasara/Flutter-Firebase-CRUD?&labelColor=black&color=8854d0&style=for-the-badge)
 
 ### License 📝
-[![GitHub license](https://img.shields.io/github/license/Pasan-Pahasara/Flutter-Firebase-CRUD?&labelColor=black&color=3867d6&style=for-the-badge)](https://github.com/Pasan-Pahasara/Room-Reservation-System/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Pasan-Pahasara/Flutter-Firebase-CRUD?&labelColor=black&color=3867d6&style=for-the-badge)](https://github.com/Pasan-Pahasara/Flutter-Firebase-CRUD/blob/master/LICENSE)
 
 <div align="center">
 
