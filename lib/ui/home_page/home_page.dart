@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_crud/services/firestore/firestore.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,8 +9,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Firestore service
+  final FirestoreService _firestore = FirestoreService();
+
+  // Text controller for the name field
   final TextEditingController _nameController = TextEditingController();
 
+  // Open the note pop up
   void openNotePopUp() {
     showDialog(
       context: context,
@@ -20,13 +26,15 @@ class _HomePageState extends State<HomePage> {
           decoration: const InputDecoration(hintText: "Enter note here"),
         ),
         actions: [
-          TextButton(
+          // Cancel button
+          ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
             child: const Text('Cancel'),
           ),
-          TextButton(
+          // Add button
+          ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
