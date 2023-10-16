@@ -12,4 +12,9 @@ class FirestoreService {
       'timestamp': Timestamp.now(),
     });
   }
+
+  // READ: Get all notes from Firestore
+  Stream<QuerySnapshot> getNotes() {
+    return notesCollection.orderBy('timestamp', descending: true).snapshots();
+  }
 }
