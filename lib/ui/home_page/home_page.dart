@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _nameController = TextEditingController();
 
   // Open the note pop up
-  void openNotePopUp() {
+  void openNotePopUp({String? docID}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -39,9 +39,16 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () {
               // Add note to Firestore
-              _firestore.addNote(
-                _nameController.text,
-              );
+              if (docID == null) {
+                _firestore.addNote(_nameController.text);
+              }
+              // Update note in Firestore
+              else {
+                _firestore.updateNote(
+                  _nameController.text,
+                  docID,
+                );
+              }
               // Clear the text controller
               _nameController.clear();
               // Close the pop up
@@ -98,16 +105,13 @@ class _HomePageState extends State<HomePage> {
                   // Get note from each doc
                   Map<String, dynamic> data =
                       document.data() as Map<String, dynamic>;
-                  if (data.containsKey('notes') &&
-                      data['notes'] != null) {
+                  if (data.containsKey('notes') && data['notes'] != null) {
                     String noteText = data['notes'];
                     // Return a widget showing the note
                     return ListTile(
                       title: Text(noteText),
                       trailing: IconButton(
-                        onPressed: () {
-                          // Update note from Firestore
-                        },
+                        onPressed: () => openNotePopUp(docID: docID),
                         icon: const Icon(Icons.settings_outlined),
                       ),
                     );
