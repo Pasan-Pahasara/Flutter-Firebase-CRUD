@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFD7E2FF),
       appBar: AppBar(
         elevation: 7,
         centerTitle: true,
@@ -107,27 +108,34 @@ class _HomePageState extends State<HomePage> {
                     document.data() as Map<String, dynamic>;
                 if (data.containsKey('notes') && data['notes'] != null) {
                   String noteText = data['notes'];
-                  // Return a widget showing the note
-                  return ListTile(
-                    title: Text(noteText),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // Update note button
-                        IconButton(
-                          onPressed: () => openNotePopUp(docID: docID),
-                          icon: const Icon(Icons.settings_outlined),
-                        ),
-                        // Delete note button
-                        IconButton(
-                          onPressed: () =>
-                            // Delete note from Firestore
-                            _firestore.deleteNote(
+                  return Card(
+                    elevation: 4,
+                    margin: const EdgeInsets.all(15),
+                    color: const Color(0xFFF4F2FD),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ListTile(
+                      title: Text(noteText),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Update note button
+                          IconButton(
+                            onPressed: () => openNotePopUp(docID: docID),
+                            icon: const Icon(Icons.settings_outlined),
+                          ),
+                          // Delete note button
+                          IconButton(
+                            onPressed: () =>
+                                // Delete note from Firestore
+                                _firestore.deleteNote(
                               docID,
                             ),
-                          icon: const Icon(Icons.delete_outline),
-                        ),
-                      ],
+                            icon: const Icon(Icons.delete_outline),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 }
