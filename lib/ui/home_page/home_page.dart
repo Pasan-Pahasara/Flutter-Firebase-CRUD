@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
           // Cancel button
           ElevatedButton(
             onPressed: () {
+              // Close the pop up
               Navigator.of(context).pop();
             },
             child: const Text('Cancel'),
@@ -36,14 +37,14 @@ class _HomePageState extends State<HomePage> {
           // Add button
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pop();
               // Add note to Firestore
               _firestore.addNote(
                 _nameController.text,
               );
-
               // Clear the text controller
               _nameController.clear();
+              // Close the pop up
+              Navigator.of(context).pop();
             },
             child: const Text('Add'),
           ),
